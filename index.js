@@ -52,7 +52,7 @@
         */
 
 
-        //Control Flow
+        /*//Control Flow
         //10.
         console.log("Exercise 1.");
         var a = 10; //the first number
@@ -227,4 +227,90 @@
                         }
 
                 }
-        } 
+        } */
+
+
+        //Objects
+        //15.
+        console.log("Exercise 1.");
+        let address = {
+                street: 'a',
+                city: 'b',
+                zipCode: 'c'
+        }
+
+        function showAddress(address){
+                for (let key in address)
+                        console.log(key, address[key]);
+        }
+        showAddress(address);
+
+        //16.
+        console.log("Exercise 2.");
+        let address2 = createAddress('忠孝東路三段','台北市','1號');
+        let address3 = new Address('忠孝東路三段','台北市','1號');
+        console.log(address2);
+        console.log(address3);
+        function createAddress(street, city, zipCode){
+                return{
+                        street,
+                        city, 
+                        zipCode
+                }
+        }
+        function Address(street, city, zipCode){
+                this.street = street;
+                this.city = city;
+                this.zipCode = zipCode;
+        }
+
+        //17.
+        console.log("Exercise 3.");
+        let address01 = new Address('a', 'b', 'c');
+        let address02 = new Address('a', 'b', 'c');
+        console.log(areEqual(address01,address02));
+        console.log(areSame(address01,address02));
+        function areEqual(address1, address2){
+                return address1.street === address2.street && address1.city === address2.city && address1.zipCode === address2.zipCode;
+        }
+        function areSame(address1, address2){
+                return address1 == address2;
+        }
+
+        //18.
+        console.log("Exercise 4.");
+        let post = {
+                title: 'a',
+                body: 'b',
+                author: 'c',
+                views: 10,
+                comment:[
+                        { author: 'a', body: 'b' },
+                        { author: 'c', body: 'd' },
+                ],
+                isLive: true,
+        };
+        console.log(post);
+
+        //19.
+        console.log("Exercise 5.");
+        function Post(title, body, author){
+                this.title = title,
+                this.body = body,
+                this.author = author,
+                this.views = 0,
+                this.comment = [];
+                this.isLive = false;
+        }
+        let post00 = new Post('a','b','c');
+        console.log(post00);
+
+        //20.
+        console.log("Exercise 6.");
+        let priseRange = [
+                {label : '$', tooltip: 'Inexpensive', minima : 0, maxima : 10},
+                {label : '$$', tooltip: 'Moderate', minima : 11, maxima : 20},
+                {label : '$$$', tooltip: 'Expensive', minima : 21, maxima : 50},
+        
+        ];
+        console.log(priseRange)
