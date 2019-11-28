@@ -230,7 +230,7 @@
         } */
 
 
-        //Objects
+        /*//Objects
         //15.
         console.log("Exercise 1.");
         let address = {
@@ -313,4 +313,121 @@
                 {label : '$$$', tooltip: 'Expensive', minima : 21, maxima : 50},
         
         ];
-        console.log(priseRange)
+        console.log(priseRange)*/
+
+        //Array
+        //17.
+        console.log("Exercise 1.");
+        const numbers = arrayFromRange(1,4);
+        console.log(numbers);
+        function arrayFromRange(min, max){
+                const output = [];
+                for(let i = min; i <= max; i++){
+                        output.push(i);        
+                }
+                return output;
+        };
+        //18.
+        console.log("Exercise 2.");
+        console.log(includes(numbers, 5));
+        function includes(array, searchElement){ // this function works like "numbers.includes(1)".
+                for(let element of array){
+                        if(element === searchElement)
+                                return true; 
+                }
+                return false;
+        }
+        //19.
+        console.log("Exercise 3.");
+        console.log(except(numbers, [1,2]));
+        function except(array, excluded){
+                const output = [];
+                for(let element of array){
+                        if(!excluded.includes(element))
+                                output.push(element); 
+                }
+                return output;
+        }
+        //20.
+        console.log("Exercise 4.");
+        console.log(move(numbers, 1, 2));
+        /*function move(array, index, offdet){
+                const output = [];
+                for(let which in array){
+                        console.log(which);
+                        //console.log(index)
+                        if(which != index)
+                                output.push(array[which]); 
+                }
+                return output;
+        }*/
+        function move(array, index, offset){
+                const position = index + offset;
+                if(position >= array.length){
+                        console.error('數字不合理。');
+                        return;
+                }
+                const output = [...array];
+                const element = output.splice(index,1)[0];
+                console.log(element);
+                output.splice(position, 0, element); 
+                return output;
+        }
+        //21.
+        console.log("Exercise 5.");
+        console.log(countOccurrences(numbers, 1));
+        function countOccurrences(array, searchElement){
+                // let nums = 0;
+                // for(let element of array){
+                //         if(element === searchElement)
+                //                 nums++; 
+                // }
+                // return nums;
+                /*also:*/
+                return array.reduce((accumulator, current) =>{
+                        const occurrence = (current === searchElement) ? 1 : 0 ;
+                        console.log(accumulator, current, searchElement)
+                        return accumulator + occurrence;
+                }, 0);
+                
+        }
+        //22.
+        console.log("Exercise 6.");
+        console.log(getMax([1, 5, 99, 10]));
+        function getMax(array){
+                if(array.length ===0) 
+                        return undefined;
+                let max = array[0];
+                for(let element of array){
+                        if(element > max)
+                                max = element; 
+                }
+                return max;
+        }
+        console.log(getMax2([1, 5, 99, 10]));
+        function getMax2(array){
+                return array.reduce((a, b) => (a > b) ? a : b);
+        }
+        //23.
+        console.log("Exercise 7.");
+        const movies = [
+                { title: 'a', year: 2018, rating: 4.5},               
+                { title: 'b', year: 2018, rating: 4.7},               
+                { title: 'c', year: 2018, rating: 3.0},               
+                { title: 'd', year: 2017, rating: 4.5},               
+        ]
+        /*console.log(searchMovie(movies, 2018));
+        function searchMovie(array, year){
+                let results = [];
+                for(let element of array){
+                        if (element.year == 2018 && element.rating >=4)
+                                results.push(element);
+                }
+        }*/
+        const titles = movies
+                .filter(m => m.year === 2018 && m.rating >= 4)
+                .sort((a,b) => a.rating - b.rating)
+                .reverse()
+                .map(m => m.title)
+        console.log(titles);
+        //這個章節學到了很多對於array資料處理的語法，我以前比較不熟悉的像是split(分割單一資料),join(結合為一資料),sort(排序分類資料),reverse(顛倒排序資料),filter(過濾資料),map(統一編輯各資料),reduce(對所有資料做計算)，感覺未來都有機會用到。
