@@ -315,7 +315,7 @@
         ];
         console.log(priseRange)*/
 
-        //Array
+        /*//Array
         //17.
         console.log("Exercise 1.");
         const numbers = arrayFromRange(1,4);
@@ -351,16 +351,16 @@
         //20.
         console.log("Exercise 4.");
         console.log(move(numbers, 1, 2));
-        /*function move(array, index, offdet){
-                const output = [];
-                for(let which in array){
-                        console.log(which);
-                        //console.log(index)
-                        if(which != index)
-                                output.push(array[which]); 
-                }
-                return output;
-        }*/
+        // function move(array, index, offdet){
+        //         const output = [];
+        //         for(let which in array){
+        //                 console.log(which);
+        //                 //console.log(index)
+        //                 if(which != index)
+        //                         output.push(array[which]); 
+        //         }
+        //         return output;
+        // }
         function move(array, index, offset){
                 const position = index + offset;
                 if(position >= array.length){
@@ -383,7 +383,7 @@
                 //                 nums++; 
                 // }
                 // return nums;
-                /*also:*/
+                //also:
                 return array.reduce((accumulator, current) =>{
                         const occurrence = (current === searchElement) ? 1 : 0 ;
                         console.log(accumulator, current, searchElement)
@@ -416,18 +416,66 @@
                 { title: 'c', year: 2018, rating: 3.0},               
                 { title: 'd', year: 2017, rating: 4.5},               
         ]
-        /*console.log(searchMovie(movies, 2018));
-        function searchMovie(array, year){
-                let results = [];
-                for(let element of array){
-                        if (element.year == 2018 && element.rating >=4)
-                                results.push(element);
-                }
-        }*/
+        console.log(searchMovie(movies, 2018));
+        // function searchMovie(array, year){
+        //         let results = [];
+        //         for(let element of array){
+        //                 if (element.year == 2018 && element.rating >=4)
+        //                         results.push(element);
+        //         }
+        // }
         const titles = movies
                 .filter(m => m.year === 2018 && m.rating >= 4)
                 .sort((a,b) => a.rating - b.rating)
                 .reverse()
                 .map(m => m.title)
-        console.log(titles);
+        console.log(titles);*/
         //這個章節學到了很多對於array資料處理的語法，我以前比較不熟悉的像是split(分割單一資料),join(結合為一資料),sort(排序分類資料),reverse(顛倒排序資料),filter(過濾資料),map(統一編輯各資料),reduce(對所有資料做計算)，感覺未來都有機會用到。
+
+        //Functions
+        //12.
+        console.log("Exercise 1.");
+        function sum(...items){
+                if ( items.length === 1 && Array.isArray(items[0]))
+                        items = [...items[0]];
+                return items.reduce((a, b) => a + b);
+                // let total = 0;
+                // for(let value of arguments)
+                //         total += value;
+                // return total;
+        }
+        console.log(sum(1,2,3,4));
+        console.log(sum([1,2,3,4]));
+
+        //13.
+        console.log("Exercise 2.");
+        const circle = {
+                radius: 1,
+                get area(){
+                        return Math.PI * this.radius * this.radius;
+                }
+        };
+        console.log(circle.area);
+
+        //14.
+        console.log("Exercise 3.");
+
+        try{
+                const numbers = [1, 2, 3, 4];
+                console.log(countOccurrences(null, 1));
+        }
+                catch(e){
+                        console.log(e.message);
+                }
+                
+        function countOccurrences(array, searchElement){
+                if(!Array.isArray(array))
+                        throw new Error('Invalid array.');
+                return array.reduce((accumulator, current) =>{
+                const occurrence = (current === searchElement) ? 1 : 0 ;
+                console.log(accumulator, current, searchElement)
+                return accumulator + occurrence;
+                }, 0);
+                
+        }
+        //這個章節在教function的應用，有些功能感覺很細，像"arguments"，有點不懂是有什麼需求才發明到這個語法XDDD 另外，"this"也挺有意思的，Mr.Mosh自己也說這個很容易讓人混淆。
